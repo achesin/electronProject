@@ -2,6 +2,13 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 
+const electronReload = require('electron-reload')
+
+require('electron-reload')(__dirname, {
+  electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
+  hardResetMethod: 'exit'
+});
+
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -12,8 +19,11 @@ function createWindow () {
     }
   })
 
-  // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
+  // you can load a webpage, creating an app for a website
+  mainWindow.loadURL('https://youtube.com')
+
+  // or load the index.html of the app for your custom works
+  // mainWindow.loadFile('index.html')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
